@@ -30,7 +30,7 @@ Yep, it doesn't work out of the box with any example firmware. Module sells with
 ## Troubleshooting
 Check power source. My module works with 3.3v even 5v, but when powering with 3.3v there is artifacts on image.
 
-If nothing works, try to flash pre-built binary with (esptool)[https://github.com/espressif/esptool]:
+If nothing works, try to flash pre-built binary with [esptool](https://github.com/espressif/esptool):
 
 ```
 esptool.py -p YOUR_SERIAL_PORT_PATH -b 460800 --after hard_reset write_flash --flash_mode dio --flash_size detect --flash_freq 40m 0x1000 binary/bootloader.bin 0x8000 binary/partition-table.bin 0x10000 binary/ESP32-CAM_HTTP_AP.bin
