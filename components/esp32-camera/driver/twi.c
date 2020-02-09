@@ -58,18 +58,18 @@ static void pinMode(uint8_t pin, uint8_t mode)
         return;
     }
 
-    uint32_t rtc_reg = rtc_gpio_desc[pin].reg;
+    uint32_t rtc_reg = rtc_io_desc[pin].reg;
 
     //RTC pins PULL settings
     if(rtc_reg) {
         //lock rtc
-        ESP_REG(rtc_reg) = ESP_REG(rtc_reg) & ~(rtc_gpio_desc[pin].mux);
+        ESP_REG(rtc_reg) = ESP_REG(rtc_reg) & ~(rtc_io_desc[pin].mux);
         if(mode & PULLUP) {
-            ESP_REG(rtc_reg) = (ESP_REG(rtc_reg) | rtc_gpio_desc[pin].pullup) & ~(rtc_gpio_desc[pin].pulldown);
+            ESP_REG(rtc_reg) = (ESP_REG(rtc_reg) | rtc_io_desc[pin].pullup) & ~(rtc_io_desc[pin].pulldown);
         } else if(mode & PULLDOWN) {
-            ESP_REG(rtc_reg) = (ESP_REG(rtc_reg) | rtc_gpio_desc[pin].pulldown) & ~(rtc_gpio_desc[pin].pullup);
+            ESP_REG(rtc_reg) = (ESP_REG(rtc_reg) | rtc_io_desc[pin].pulldown) & ~(rtc_io_desc[pin].pullup);
         } else {
-            ESP_REG(rtc_reg) = ESP_REG(rtc_reg) & ~(rtc_gpio_desc[pin].pullup | rtc_gpio_desc[pin].pulldown);
+            ESP_REG(rtc_reg) = ESP_REG(rtc_reg) & ~(rtc_io_desc[pin].pullup | rtc_io_desc[pin].pulldown);
         }
         //unlock rtc
     }
