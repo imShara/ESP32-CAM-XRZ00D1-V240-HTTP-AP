@@ -1,4 +1,4 @@
-# ESP32-CAM XRZ00D1-V240 HTTP Server example with latest ESP-IDF
+# ESP32-CAM XRZ00D1-V240 HTTP Server example with release/v4.1 of ESP-IDF
 HTTP Camera Server example with latest ESP-IDF and chineese (clone?) Ai-Thinker ESP32-CAM module with XRZ00D1-V240 camera module
 
 ## What is ESP32-CAM?
@@ -11,9 +11,10 @@ It's OV2640 (or compatible?) camera module which you can get with latest ESP32-C
 Yep, it doesn't work out of the box with any example firmware. Module sells without any source codes ¯\_(ツ)_/¯
 
 ## How to build
-1. You need latest [ESP-ID SDK](https://github.com/espressif/esp-idf). [How to install it](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/index.html).
+1. You need release/v4.1 of the [ESP-ID SDK](https://github.com/espressif/esp-idf). [How to install it](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/index.html).
+   Make sure to checkout the release/v4.1 branch before going through the install steps!
 2. Clone repo
-3. Run `idf.py menuconfig` and set WIFI SSID and password (myssid/mypassword is default)
+3. Run `idf.py menuconfig` and set WIFI SSID and password in the `Example Configuration` option (myssid/mypassword is default)
 4. Run `idf.py build`
 
 ## How to flash
@@ -23,8 +24,9 @@ Yep, it doesn't work out of the box with any example firmware. Module sells with
 4. After flashing you shoud unconnect IO0 and GND and push RESET button on module to boot new firmware
 
 ## How to check
-1. You can use `idf.py monit` to check boot logs
-2. Connect via wifi to it's ssid
+1. You can use `idf.py monit` to check boot logs.  If this does not work you can also use screen
+   `screen /dev/ttyUSB0 115200`
+2. Connect over wifi to the network that the ESP 32 created.  This will be whatever you set the SSID to.
 3. Open `http://192.168.4.1/jpg` to make shot 
 
 ## Troubleshooting
